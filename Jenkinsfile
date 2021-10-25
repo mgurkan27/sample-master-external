@@ -18,7 +18,7 @@ pipeline {
                 echo 'Retrieve source from github. run npm install and npm test' 
 				echo 'Retrieving source from github'
 				git branch: 'master',
-				url: 'https://github.com/bDolphin/sample-master-external.git'
+				url: 'https://github.com/mgurkan27/sample-master-external.git'
 				echo 'Did we get the source?'
 				sh 'ls -a'
 				echo 'Tests passed on to build and deploy Docker container'
