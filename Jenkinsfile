@@ -2,7 +2,7 @@ pipeline {
     agent any 
     environment {
         registryCredential = 'mgurkan27'
-        imageName = 'mgurkan27/external-v1'
+        imageName = 'mgurkan27/external-v1:20'
         dockerImage = ''
         }
     stages {
