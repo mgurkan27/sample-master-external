@@ -1,8 +1,8 @@
 pipeline {
     agent any 
     environment {
-        registryCredential = 'bDocker'
-        imageName = 'bdolphin/external-v1'
+        registryCredential = 'mgurkan27'
+        imageName = 'mgurkan27/external-v1'
         dockerImage = ''
         }
     stages {
