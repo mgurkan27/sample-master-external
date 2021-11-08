@@ -32,22 +32,4 @@ pipeline {
                 }
             }
             }
-        stage('Push Image') {
-            steps{
-                script {
-                    echo 'push the image to docker hub' 
-					docker.withRegistry( '', registryCredential ) {
-			    	dockerImage.push("$BUILD_NUMBER") }
-                }
-            }
-        }     
-             
-        stage('Remove local docker image') {
-            steps{
-			    echo 'will do later'
-                sh "docker rmi $imageName:latest"
-                sh "docker rmi $imageName:$BUILD_NUMBER"
-            }
-        }
-    }
 }
