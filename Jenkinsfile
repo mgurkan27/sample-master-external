@@ -48,11 +48,13 @@ pipeline {
       stage ('Deploy') {
        steps {
         sh '''
-         declare -n CLUSTER_NAME=my-cluster
+         
          aws eks --region us-east-1  update-kubeconfig --name my-cluster
 
          '''
-       
+       //sh '''
+	kubectl set image deployment/events-external events-external=$imageName:$BUILD_NUMBER --record
+	'''
         }
      }
 	    
