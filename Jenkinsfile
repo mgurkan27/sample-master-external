@@ -52,7 +52,7 @@ pipeline {
          aws eks --region us-east-1  update-kubeconfig --name my-cluster
 
          '''
-       //sh '''
+       sh '''
 	kubectl set image deployment/events-external events-external=$imageName:$BUILD_NUMBER --record
 	'''
         }
