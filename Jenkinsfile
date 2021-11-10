@@ -4,6 +4,9 @@ pipeline {
         registryCredential = 'mgurkan27'
         imageName = 'mgurkan27/external-v1:20'
         dockerImage = ''
+	AWS_DEFAULT_REGION = "us-east-1"
+        CHART_DIR="$JENKINS_HOME/workspace/helm-integration/helm"
+        HELM_RELEASE_NAME = "api-service"
         }
     stages {
         stage('Run the tests') {
@@ -41,7 +44,18 @@ pipeline {
                 }
             }
         }     
-         //stage('deploy to k8s') {
+         
+	    
+      stage ('Deploy') {
+       steps {
+        sh '''
+        declare -n CLUSTER_NAME=my-cluster
+        aws eks --region us-east-1  update-kubeconfig --name my-cluster
+       
+      }
+    }
+	    
+	    //stage('deploy to k8s') {
              //agent {
                 //docker { 
                     //image 'google/cloud-sdk:latest'
