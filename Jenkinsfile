@@ -3,7 +3,9 @@ pipeline {
     environment {
         registryCredential = 'mgurkan27'
         imageName = 'mgurkan27/external-v1:20'
-        
+        dockerImage = ''
+	AWS_DEFAULT_REGION = "us-east-1"
+    
         }
     stages {
         stage('Run the tests') {
@@ -41,7 +43,19 @@ pipeline {
                 }
             }
         }     
-        
+         
+	    
+      stage ('Deploy') {
+       steps {
+        sh '''
+         declare -n CLUSTER_NAME=my-cluster
+         aws eks --region us-east-1  update-kubeconfig --name my-cluster
+
+         '''
+       
+        }
+     }
+	    
 	    //stage('deploy to k8s') {
              //agent {
                 //docker { 
